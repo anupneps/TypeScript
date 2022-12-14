@@ -1,6 +1,4 @@
-
-
-import {  Customer } from "./types/branch";
+import {Customer } from "./types/branch";
 class Branch {
  private name:string;
  private customers:Customer[];
@@ -28,27 +26,5 @@ addCustomer(customer:Customer){
 }
 
 }
-
-
-// const sanima = new Bank ('sanimabank')
-
-// sanima.addBranch('helsinki');
-// sanima.addBranch('espoo');
-// sanima.addBranch('vantaa');
-
-// console.log(sanima);
-
-const arizonaBank = new Bank("Arizona")
-const westBranch = new Branch("West Branch")
-
-const sunBranch = new Branch("Sun Branch")
-console.log(westBranch);
-arizonaBank.addBranch(westBranch)
-console.log(arizonaBank)
-// arizonaBank.addBranch(sunBranch)
-// arizonaBank.addBranch(westBranch) 
-
-
-
 
 

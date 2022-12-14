@@ -1,6 +1,7 @@
 import {Branch } from "./types/branch";
+import {Customer } from "./types/customer";
 
-class Bank{
+export class Bank{
   private name: string;
   private branches: Branch[]
   
@@ -54,8 +55,17 @@ class Bank{
   }
 
   }
-  
+
+
+  const arizonaBank = new Bank("Arizona")
+const westBranch = new Branch("West Branch")
+const sunBranch = new Branch("Sun Branch")
    
+arizonaBank.addBranch(westBranch)
+arizonaBank.addBranch(sunBranch)
+arizonaBank.addBranch(westBranch) 
+
+console.log(arizonaBank)
 
 
 
