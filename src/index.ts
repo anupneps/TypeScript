@@ -1,9 +1,10 @@
 import { List } from "./types/ecommerce";
+import { User } from "./types/user";
 
 /* Fix all the possible bugs you might find in the codes below */
 
-const users = new List()
-const products = new List()
+const users = new List<User>()
+const products = new List<User>()
 
 users.fetchAll("https://api.escuelajs.co/api/v1/users")
 products.fetchAll("https://api.escuelajs.co/api/v1/products")

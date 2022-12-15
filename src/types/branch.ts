@@ -13,20 +13,34 @@ getName(){
 }
 
 getCustomers(){
-   this.customers.forEach((customer)=> {
-    return customer
-  })
+   return this.customers
 }
+
 
 addCustomer(customer:Customer){
-  if(this.customers.includes(customer)){
+  if(this.customers.find(element=> element.name === customer.name)){
     return false
-  }else{
+  }
     this.customers.push(customer)
     return true
+}
+
+addCustomerTransaction(customerId:string, transactionAmount:number){
+  let customer = this.customers.find(customer=> customer.id === customerId)
+  if(!customer){
+    return false
   }
+    customer.addTransaction(transactionAmount)
+    // return customer.transactions // 
+  
+}
+
+findCustomer(customerId:string){
+  let customer = this.customers.find(customer=> customer.id === customerId)
+  if(!customer){
+    return null
+}
+  return customer
 }
 
 }
-
-
