@@ -10,9 +10,14 @@ export class Bank{
     this.name = name;
     this.branches = [];
   }
+
+  hasBranch(branch:Branch){
+    return this.branches.find(b=> b.getName() === branch.getName())
+  }
+
 // method 1 
   addBranch(branch:Branch){
-    if(this.branches.includes(branch)){
+    if(this.hasBranch(branch)){
       return false
     }
       this.branches.push(branch)
@@ -30,8 +35,8 @@ export class Bank{
   }
 
 // method 4
-  findBranchByName(branch:string){
-    const branchName = this.branches.find(nameBranch =>nameBranch.getName() === branch)
+  findBranchByName(branchName:string){
+    const bName = this.branches.find(branch =>branch.getName() === branchName)
     if(!branchName){
       return null
     }
@@ -40,26 +45,31 @@ export class Bank{
 
 // method 5
   checkBranch(branch:Branch){
-    if(this.branches.includes(branch)){
+    if(this.hasBranch(branch)){
       return true
     }
       return false
   }
 
 // method 6
-  listCustomers(branch:Branch, value:Boolean){
-    this.checkBranch(branch)
-    if(value){
-      
+  listCustomers(branch:Branch, withTransaction:Boolean){
+    if(!this.checkBranch(branch)){
+      console.log("Branch doesn't exist")
+      return 
+    }
+    if(withTransaction){
       return branch.getCustomers()
     }
-
+    return branch.getCustomers().map((c)=>{
+      return{
+        id: c.id,
+        name:c.name
+      }
+    })
     }  
   }
 
   
-
-
   const arizonaBank = new Bank("Arizona")
   const westBranch = new Branch("West Branch")
   const sunBranch = new Branch("Sun Branch")
@@ -84,14 +94,6 @@ export class Bank{
   arizonaBank.addCustomerTransaction(westBranch, customer2.getId(), 3000)
   
   customer1.addTransaction(-1000)
-  // console.log(customer1.getBalance())
-  // console.log(arizonaBank.listCustomers(westBranch, true))
-  // console.log(arizonaBank.listCustomers(sunBranch,true))
-
-console.log(sunBranch.getCustomers());
-console.log('-------------')
-console.log(westBranch.getCustomers());
-
-
-
-
+  console.log(customer2.getBalance())
+  console.log(arizonaBank.listCustomers(westBranch, true))
+  console.log(arizonaBank.listCustomers(sunBranch,true))

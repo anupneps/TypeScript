@@ -18,7 +18,7 @@ getCustomers(){
 
 
 addCustomer(customer:Customer){
-  if(this.customers.find(element=> element.name === customer.name)){
+  if(this.customers.find(element=> element.id === customer.id)){
     return false
   }
     this.customers.push(customer)

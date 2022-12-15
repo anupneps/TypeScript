@@ -12,7 +12,7 @@ export class Customer{
   }
 
   generateId(){
-    return "Cus:"+ new Date().getTime()
+    return "Cus:"+ new Date().getTime() * Math.random()
   }
   
   getName(){
