@@ -2,9 +2,9 @@ import { randomId } from "./randomId";
 import { Transaction } from "./transcation";
 
 export class Customer{
-  name:string
-  id: string
-  transactions: Transaction[]
+  private name:string
+  private id: string
+  private transactions: Transaction[]
 
   constructor(name:string){
     this.name = name;

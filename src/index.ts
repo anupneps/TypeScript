@@ -1,21 +1,25 @@
 import { List } from "./types/ecommerce";
+import { Product } from "./types/product";
 import { User } from "./types/user";
 
 /* Fix all the possible bugs you might find in the codes below */
 
 const users = new List<User>()
-const products = new List<User>()
+const products = new List<Product>()
 
 users.fetchAll("https://api.escuelajs.co/api/v1/users")
 products.fetchAll("https://api.escuelajs.co/api/v1/products")
+
+console.log(users)
 
 console.log(users.sortList("desc")) //Expect to see users array in new order of id decreasing
 
 /** find user by email.
  * Take a parameter of type string.
  * Return a found user or null*/
-const findUserByEmail = (email) => {
-    users.find(user => user.email === email)
+const findUserByEmail = (email:string)=>  {
+    return users.find(user => user.email === email)
+   
 }
 const foundUser = findUserByEmail("john@mail.com")
 console.log(foundUser) //expect to see user with email "john@mail.com" in the console
@@ -24,11 +28,11 @@ console.log(foundUser) //expect to see user with email "john@mail.com" in the co
  * Take a parameter of type string.
  * Return an array
  */
-const findProductsByText = (search) => {
+const findProductsByText = (search:string) => {
     products.filter(products => products.title === search)
 }
 const foundProducts = findProductsByText("shirt")
-console.log(foundProducts) //expect to see an array of all found products
+//console.log(foundProducts) //expect to see an array of all found products
 
 const testPush1 = users.push(
     {
@@ -68,7 +72,7 @@ const testPush2 = users.push(
     }
 )
 
-console.log(testPush1) // expect to see 0
-console.log(testPush2) // expect to see 1
+//console.log(testPush1) // expect to see 0
+//console.log(testPush2) // expect to see 1
 
-console.log(users) // expect too see 2 more users added in the end of array
+// console.log(users) // expect too see 2 more users added in the end of array

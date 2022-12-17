@@ -18,7 +18,7 @@ getCustomers():Array<Customer>{
 
 
 addCustomer(customer:Customer):Boolean{
-  if(this.customers.find(element=> element.id === customer.id)){
+  if(this.customers.find(element=> element.getId() === customer.getId())){
     return false
   }
     this.customers.push(customer)
@@ -26,7 +26,7 @@ addCustomer(customer:Customer):Boolean{
 }
 
 addCustomerTransaction(customerId:string, transactionAmount:number):Boolean{
-  let customer = this.customers.find(customer=> customer.id === customerId)
+  let customer = this.customers.find(customer=> customer.getId() === customerId)
   if(!customer){
     return false
   }
@@ -35,7 +35,7 @@ addCustomerTransaction(customerId:string, transactionAmount:number):Boolean{
 }
 
 findCustomer(customerId:string){
-  let customer = this.customers.find(customer=> customer.id === customerId)
+  let customer = this.customers.find(customer=> customer.getId() === customerId)
   if(!customer){
     return null
 }
