@@ -1,3 +1,4 @@
+import { randomId } from "./randomId";
 import { Transaction } from "./transcation";
 
 export class Customer{
@@ -7,31 +8,27 @@ export class Customer{
 
   constructor(name:string){
     this.name = name;
-    this.id = this.generateId();
+    this.id = randomId(6);
     this.transactions = []
   }
 
-  generateId(){
-    return "Cus:"+ new Date().getTime() * Math.random()
-  }
-  
-  getName(){
+  getName():string{
     return this.name
   }
 
-  getId(){
+  getId():string{
     return this.id
   }
 
-  getTransactions(){
+  getTransactions():Array<Transaction>{
     return this.transactions
   }
 
-  getBalance(){
+  getBalance():number{
     return this.transactions.map(amt=>amt.amount).reduce((accumulator, currentValue)=> accumulator+ currentValue, 0) // sum 
   }
 
-  addTransaction(amount:number){
+  addTransaction(amount:number):Boolean{
     if((this.getBalance()+amount)<0){ // balance more than 0
      return false
     }

@@ -1,10 +1,9 @@
 import {Branch } from "./types/branch";
 import {Customer } from "./types/customer";
-import {Transaction } from "./types/transcation";
 
 export class Bank{
   private name: string;
-   branches: Branch[]
+  private branches: Branch[]
   
   constructor(name:string){
     this.name = name;
@@ -16,7 +15,7 @@ export class Bank{
   }
 
 // method 1 
-  addBranch(branch:Branch){
+  addBranch(branch:Branch):Boolean{
     if(this.hasBranch(branch)){
       return false
     }
@@ -25,7 +24,7 @@ export class Bank{
     }
 
 // method 2
-  addCustomer(branch:Branch, customer:Customer){
+  addCustomer(branch:Branch, customer:Customer):Boolean{
     return branch.addCustomer(customer)
   }
 
@@ -35,16 +34,16 @@ export class Bank{
   }
 
 // method 4
-  findBranchByName(branchName:string){
+  findBranchByName(branchName:string):string|null{
     const bName = this.branches.find(branch =>branch.getName() === branchName)
-    if(!branchName){
+    if(!bName){
       return null
     }
     return branchName
   }
 
 // method 5
-  checkBranch(branch:Branch){
+  checkBranch(branch:Branch):Boolean{
     if(this.hasBranch(branch)){
       return true
     }
@@ -93,7 +92,12 @@ export class Bank{
   arizonaBank.addCustomerTransaction(westBranch, customer1.getId(), 2000)
   arizonaBank.addCustomerTransaction(westBranch, customer2.getId(), 3000)
   
-  customer1.addTransaction(-1000)
-  console.log(customer2.getBalance())
-  console.log(arizonaBank.listCustomers(westBranch, true))
-  console.log(arizonaBank.listCustomers(sunBranch,true))
+  
+  // customer1.addTransaction(-1000)
+  // console.log(customer2.getBalance())
+  // console.log(arizonaBank.listCustomers(westBranch, true))
+  // console.log(arizonaBank.listCustomers(sunBranch,true))
+  console.log(sunBranch)
+
+  
+  

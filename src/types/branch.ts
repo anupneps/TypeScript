@@ -8,16 +8,16 @@ export class Branch {
  this.name = branchName;
  this.customers = []
  }
-getName(){
+getName():string{
   return this.name
 }
 
-getCustomers(){
+getCustomers():Array<Customer>{
    return this.customers
 }
 
 
-addCustomer(customer:Customer){
+addCustomer(customer:Customer):Boolean{
   if(this.customers.find(element=> element.id === customer.id)){
     return false
   }
@@ -25,14 +25,13 @@ addCustomer(customer:Customer){
     return true
 }
 
-addCustomerTransaction(customerId:string, transactionAmount:number){
+addCustomerTransaction(customerId:string, transactionAmount:number):Boolean{
   let customer = this.customers.find(customer=> customer.id === customerId)
   if(!customer){
     return false
   }
     customer.addTransaction(transactionAmount)
-    // return customer.transactions // 
-  
+    return true
 }
 
 findCustomer(customerId:string){
