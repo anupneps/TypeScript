@@ -93,11 +93,10 @@ export class Bank{
   arizonaBank.addCustomerTransaction(westBranch, customer2.getId(), 3000)
   
   
-  // customer1.addTransaction(-1000)
-  // console.log(customer2.getBalance())
-  // console.log(arizonaBank.listCustomers(westBranch, true))
-  // console.log(arizonaBank.listCustomers(sunBranch,true))
-  console.log(sunBranch)
-
+  customer1.addTransaction(-1000)
+  console.log(customer2.getBalance())
+  console.log(arizonaBank.listCustomers(westBranch, true))
+  console.log(arizonaBank.listCustomers(sunBranch,true))
+  
   
   
